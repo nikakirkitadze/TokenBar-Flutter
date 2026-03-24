@@ -1,0 +1,35 @@
+name: tokenbar_flutter
+description: "TokenBar - Claude AI Usage Monitor for Windows & Linux"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  http: ^1.2.1
+  shared_preferences: ^2.3.3
+  flutter_secure_storage: ^9.2.3
+  window_manager: ^0.4.3
+  flutter_inappwebview: ^6.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  msix: ^3.16.8
+
+flutter:
+  uses-material-design: true
+
+msix_config:
+  display_name: TokenBar
+  publisher_display_name: TokenBar
+  identity_name: TokenBar
+  description: Claude AI Usage Monitor for Desktop
+  logo_path: windows/runner/resources/app_icon.ico
+  capabilities: internetClient
+  store: true
