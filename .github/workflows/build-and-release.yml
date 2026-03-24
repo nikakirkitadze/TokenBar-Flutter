@@ -87,7 +87,7 @@ jobs:
         shell: pwsh
         run: |
           msstore reconfigure --sellerId ${{ secrets.PARTNER_CENTER_SELLER_ID }} --tenantId ${{ secrets.PARTNER_CENTER_TENANT_ID }} --clientId ${{ secrets.PARTNER_CENTER_CLIENT_ID }} --clientSecret ${{ secrets.PARTNER_CENTER_CLIENT_SECRET }}
-          msstore publish . -i msix/
+          msstore publish . -i msix/ --appId 9PBLL91P0F8P
 
   # ──────────────── GitHub Release (public repo) ─────────────────
   create-release:
