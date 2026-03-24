@@ -87,8 +87,7 @@ jobs:
         shell: pwsh
         run: |
           msstore reconfigure --sellerId ${{ secrets.PARTNER_CENTER_SELLER_ID }} --tenantId ${{ secrets.PARTNER_CENTER_TENANT_ID }} --clientId ${{ secrets.PARTNER_CENTER_CLIENT_ID }} --clientSecret ${{ secrets.PARTNER_CENTER_CLIENT_SECRET }}
-          $msixPath = Get-ChildItem -Path msix\*.msix | Select-Object -ExpandProperty FullName
-          msstore publish . --inputFile $msixPath
+          msstore publish . -i msix/
 
   # ──────────────── GitHub Release (public repo) ─────────────────
   create-release:
