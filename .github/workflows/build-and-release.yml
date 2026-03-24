@@ -73,6 +73,8 @@ jobs:
     needs: build-windows
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
+      - uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
         with:
           name: tokenbar-windows-msix
@@ -82,9 +84,11 @@ jobs:
         run: winget install "Microsoft Store Developer CLI" --accept-package-agreements --accept-source-agreements
 
       - name: Publish to Microsoft Store
+        shell: pwsh
         run: |
           msstore reconfigure --sellerId ${{ secrets.PARTNER_CENTER_SELLER_ID }} --tenantId ${{ secrets.PARTNER_CENTER_TENANT_ID }} --clientId ${{ secrets.PARTNER_CENTER_CLIENT_ID }} --clientSecret ${{ secrets.PARTNER_CENTER_CLIENT_SECRET }}
-          msstore publish msix/
+          $msixPath = Get-ChildItem -Path msix\*.msix | Select-Object -ExpandProperty FullName
+          msstore publish . --inputFile $msixPath
 
   # ──────────────── GitHub Release (public repo) ─────────────────
   create-release:
