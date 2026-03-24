@@ -111,6 +111,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
+          gh release delete "$TAG" --repo nikakirkitadze/TokenBar --yes 2>/dev/null || true
           gh release create "$TAG" \
             --repo nikakirkitadze/TokenBar \
             --title "TokenBar $TAG" \
