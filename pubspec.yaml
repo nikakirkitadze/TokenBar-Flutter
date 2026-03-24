@@ -28,6 +28,7 @@ flutter:
 msix_config:
   display_name: TokenBar
   publisher_display_name: TokenBar
+  publisher: CN=74CB5298-10D4-4D76-846F-C40EC7FEA736
   identity_name: TokenBar
   description: Claude AI Usage Monitor for Desktop
   logo_path: windows/runner/resources/app_icon.ico
