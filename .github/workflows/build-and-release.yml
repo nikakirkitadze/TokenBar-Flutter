@@ -107,11 +107,12 @@ jobs:
 
       - name: Create release on public repo
         env:
+          GITHUB_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
           GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
           gh release create "$TAG" \
-            --repo nikakirkitadze/Tokenbar \
+            --repo nikakirkitadze/TokenBar \
             --title "TokenBar $TAG" \
             --notes "## Downloads
 
